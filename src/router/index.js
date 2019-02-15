@@ -15,15 +15,11 @@ export default new Router({
       name: 'HelloWorld',
       component: HelloWorld,
     },
-
-    // http://localhost:8080/example
     {
       path: '/example',
       name: 'example',
       component: Example,
     },
-
-    // http://localhost:8080/todopage
     {
       path: '/todos',
       name: 'todos',

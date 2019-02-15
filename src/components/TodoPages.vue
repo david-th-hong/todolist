@@ -2,9 +2,13 @@
 <div class="container">
   <h2>구매 희망 도서</h2>
   <div class="input-group" style="margin-bottom:10px;">
-    <input type="text" class="form-control" placeholder="도서 명을 입력하세요">
+    <input type="text" class="form-control"
+            placeholder="도서명을 입력하세요"
+            v-model="name"
+            v-on:keyup.enter="createTodo(name)">
     <span class="input-group-btn" >
-      <button class="btn btn-default" type="button">추가</button>
+      <button class="btn btn-default" type="button"
+        @click="createTodo(name)">추가</button>
     </span>
   </div>
   <ul class="list-group">
@@ -20,8 +24,11 @@
           더보기 <span class="caret"></span>
         </button>
         <ul class="dropdown-menu">
-          <li><a href="#">삭제</a></li>
-          <li><a href="#">변경</a></li>
+          <li>
+            <a href="#" @click="deletetodo(index)">삭제</a> 
+            <!-- 삭제기능 methods 에서 구현 deletetodo -->
+          </li>
+          <li><a href="#">변경(TBD)</a></li>
         </ul>
       </div>
     </li>
@@ -31,6 +38,17 @@
 
 <script>
 export default {
+  methods: {
+    deletetodo(i){
+      this.todos.splice(i,1);
+    },
+    createTodo(name){
+      if(name != null){
+        this.todos.push({name:name});
+        this.name = null
+      }
+    },
+  },
   name: 'TodoPage',
   data() {
     return {
