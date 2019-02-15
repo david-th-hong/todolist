@@ -7,7 +7,7 @@ import router from './router';
 
 
 Vue.config.productionTip = false;
-// axios config
+// axios config : It can be use axios global project
 Vue.prototype.$http = axios;
 
 /* eslint-disable no-new */
