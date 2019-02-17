@@ -12,20 +12,20 @@
     </span>
   </div>
   <ul class="list-group">
-    <li class="list-group-item" v-for="(todo, index) in todos">
+    <li class="list-group-item" v-for="(todo, index) in todos" :key="`todo-${index}`">
     {{todo.name}}
-      <div class="btn-group pull-right" 
+      <div class="btn-group pull-right"
         style="font-size: 12px; line-height: 1;">
-        <button type="button" 
-        class="btn-link dropdown-toggle" 
-        data-toggle="dropdown" 
-        aria-haspopup="true" 
+        <button type="button"
+        class="btn-link dropdown-toggle"
+        data-toggle="dropdown"
+        aria-haspopup="true"
         aria-expanded="false">
           더보기 <span class="caret"></span>
         </button>
         <ul class="dropdown-menu">
           <li>
-            <a href="#" @click="deletetodo(index)">삭제</a> 
+            <a href="#" @click="deletetodo(index)">삭제</a>
             <!-- 삭제기능 methods 에서 구현 deletetodo -->
           </li>
           <li><a href="#">변경(TBD)</a></li>
@@ -39,19 +39,22 @@
 <script>
 export default {
   methods: {
-    deletetodo(i){
-      this.todos.splice(i,1);
+    deletetodo(i) {
+      this.todos.splice(i, 1);
     },
-    createTodo(name){
-      if(name != null){
-        this.todos.push({name:name});
-        this.name = null
+    createTodo(name) {
+      if (name != null) {
+        this.todos.push({
+          name,
+        });
+        this.name = null;
       }
     },
   },
   name: 'TodoPage',
   data() {
     return {
+      name: '',
       todos: [
         {
           name: '신청도서 1',
